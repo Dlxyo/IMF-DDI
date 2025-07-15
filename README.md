@@ -42,6 +42,9 @@ python utils/drugbank_event_pkl.py \
   --output pkl/drugbank_pathway.pkl \
   --full
 ```
+1.3 train
+
+
 2.1 Same as Drugbank to process TWOSIDES
 
 
