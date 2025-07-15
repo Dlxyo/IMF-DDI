@@ -21,4 +21,13 @@ conda env create -f environment.yaml
 
 Two ```.pkl``` files are required for training. One stores drug–drug interaction (DDI) information, while the other stores drug–external entity interaction information extracted from knowledge graphs (KGs). The following sections describe how to generate these two files from the original raw data.
 
-1.
+1.use commond
+```
+python scripts/generate_ddi_pkl.py \
+  --train datasets/train.csv \
+  --val datasets/val.csv \
+  --test datasets/test.csv \
+  --ddi data/ddi_id.txt \
+  --output data/processed/newdataset_event.pkl
+
+```
