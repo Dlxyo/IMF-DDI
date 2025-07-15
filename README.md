@@ -21,7 +21,7 @@ conda env create -f environment.yaml
 
 Two ```.pkl``` files are required for training. One stores drug–drug interaction (DDI) information, while the other stores drug–external entity interaction information extracted from knowledge graphs (KGs). The following sections describe how to generate these two files from the original raw data.
 
-1.First, use the following command to obtain the pkl file for drug interactions.
+1.1 First, use the following command to obtain the pkl file for drug interactions.
 ```
 cd Drugbank
 ```
@@ -33,7 +33,7 @@ python utils/drugbank_drug_pkl.py \
   --ddi data/drugbank_ddi_id.txt \
   --output pkl/drugbank_event.pkl
 ```
-2.We need to extract external entity information related to drugs involved in training from the downloaded KGs.
+1.2 We need to extract external entity information related to drugs involved in training from the downloaded KGs.
 We attempted to extract external entity information from multiple KG files using Drugbank ID and Pubchem ID, and supplemented it with the Drugbank database file. For the convenience of reproducing the process described in the article, we directly provide the processed ```.csv``` file(Drugbank/data/drugbank.csv). If you need to introduce other KGs, you can supplement the information according to the format of this. All initial representations used in this project are from unimol. You can choose to replace them with other molecular representation models that represent three-dimensional information.
 ```
 python utils/drugbank_event_pkl.py \
