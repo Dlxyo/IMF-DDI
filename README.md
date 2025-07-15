@@ -28,5 +28,5 @@ python Drugbank/utils/drugbank_pkl.py \
   --val data/val.csv \
   --test data/test.csv \
   --ddi data/drugbank_ddi_id.txt \
-  --output data/drugbank_event.pkl
+  --output pkl/drugbank_event.pkl
 ```
