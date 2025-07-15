@@ -26,7 +26,7 @@ Two ```.pkl``` files are required for training. One stores drug–drug interacti
 cd Drugbank
 ```
 ```
-python utils/drugbank_pkl.py \
+python utils/drugbank_drug_pkl.py \
   --train data/train.csv \
   --val data/val.csv \
   --test data/test.csv \
