@@ -11,9 +11,9 @@ https://go.drugbank.com/releases/latest
 
 
 **Setting up the conda environment**
+
+Use the command below to directly create an environment named IMFDDI.
 ```
-function test() {
-console.log(‘conda env create -f environment.yaml’);
-}
+conda env create -f environment.yaml
 ```
 
