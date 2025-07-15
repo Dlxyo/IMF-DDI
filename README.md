@@ -1,4 +1,5 @@
 # IMF-DDI
+*Data preparation*
 An innovative (Drug-Drug interaction)DDI predic- tion framework 
 KGs information can be obtained from the following link：
 1.https://het.io/
