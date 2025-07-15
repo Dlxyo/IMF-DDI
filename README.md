@@ -17,3 +17,4 @@ Use the command below to directly create an environment named IMFDDI.
 conda env create -f environment.yaml
 ```
 
+**Data processing**
