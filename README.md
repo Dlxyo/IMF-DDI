@@ -37,8 +37,8 @@ python utils/drugbank_drug_pkl.py \
 We attempted to extract external entity information from multiple KG files using Drugbank ID and Pubchem ID, and supplemented it with the Drugbank database file. For the convenience of reproducing the process described in the article, we directly provide the processed ```.csv``` file(Drugbank/data/drugbank.csv). If you need to introduce other KGs, you can supplement the information according to the format of thi
 ```
 python utils/drugbank_event_pkl.py \
-  --csv data/drugbank_all_pathwayv2.csv \
-  --txt data/embedding/drugbank_all_part3.txt \
+  --csv data/drugbank.csv \
+  --txt data/unimol_repr_drugbank.txt \
   --output pkl/drugbank_pathway.pkl \
   --full
 ```
