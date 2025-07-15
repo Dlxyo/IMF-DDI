@@ -33,3 +33,4 @@ python utils/drugbank_pkl.py \
   --ddi data/drugbank_ddi_id.txt \
   --output pkl/drugbank_event.pkl
 ```
+2.We need to extract external entity information related to drugs involved in training from the downloaded KGs.
