@@ -11,6 +11,6 @@ https://go.drugbank.com/releases/latest
 
 
 **Setting up the conda environment**
-'''
-conda env create -f environment.yaml
-'''
+console.log(‘conda env create -f environment.yaml’);
+
+
