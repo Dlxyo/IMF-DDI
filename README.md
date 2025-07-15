@@ -42,3 +42,5 @@ python utils/drugbank_event_pkl.py \
   --output pkl/drugbank_pathway.pkl \
   --full
 ```
+2.1 Same as Drugbank to process TWOSIDES
+2.2 Same as Drugbank to process TWOSIDES
