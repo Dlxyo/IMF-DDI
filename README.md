@@ -23,11 +23,11 @@ Two ```.pkl``` files are required for training. One stores drug–drug interacti
 
 1.use commond
 ```
-python scripts/generate_ddi_pkl.py \
-  --train datasets/train.csv \
-  --val datasets/val.csv \
-  --test datasets/test.csv \
-  --ddi data/ddi_id.txt \
-  --output data/processed/newdataset_event.pkl
+python Drugbank/utils/drugbank_pkl.py \
+  --train data/train.csv \
+  --val data/val.csv \
+  --test data/test.csv \
+  --ddi data/drugbank_ddi_id.txt \
+  --output data/drugbank_event.pkl
 
 ```
