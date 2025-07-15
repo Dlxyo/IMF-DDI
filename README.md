@@ -8,3 +8,6 @@ KGs information can be obtained from the following link：
 
 External entity relationships corresponding to drugs can be obtained by applying for a database file from the official website of drugbank.
 https://go.drugbank.com/releases/latest
+
+
+**Setting up the conda environment**
