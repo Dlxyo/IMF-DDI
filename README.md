@@ -39,14 +39,14 @@ We attempted to extract external entity information from multiple KG files using
 python utils/drugbank_event_pkl.py \
   --csv data/drugbank.csv \
   --txt data/unimol_repr_drugbank.txt \
-  --output pkl/drugbank_pathway.pkl \
+  --output pkl/drugbank_drug.pkl \
   --full
 ```
 1.3 Before executing the training file, you need to manually change the pkl file path to the generated path.
 ```
 python Drugbank/train.py
 ```
-2.1 Same as Drugbank to process TWOSIDES, the file is too large to be split, so it needs to be manually extracted from the compressed package and placed in the data folder.
+2.1 Same as Drugbank to process TWOSIDES, the data files is too large and needs to be manually decompressed from the compressed package and placed in the data folder.
 ```
 cd TWOSIDES
 ```
@@ -60,3 +60,10 @@ python utils/TWOSIDES_event_pkl.py \
 ```
 
 2.2 Same as Drugbank to process TWOSIDES
+```
+python utils/drugbank_event_pkl.py \
+  --csv data/TWOSIDES.csv \
+  --txt data/unimol_repr_TWOSIDES.txt \
+  --output pkl/TWOSIDES_drug.pkl \
+  --full
+```
