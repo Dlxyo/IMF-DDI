@@ -47,6 +47,16 @@ python utils/drugbank_event_pkl.py \
 python Drugbank/train.py
 ```
 2.1 Same as Drugbank to process TWOSIDES
-
+```
+cd TWOSIDES
+```
+```
+python utils/drugbank_drug_pkl.py \
+  --train data/train.csv \
+  --val data/val.csv \
+  --test data/test.csv \
+  --ddi data/drugbank_ddi_id.txt \
+  --output pkl/drugbank_event.pkl
+```
 
 2.2 Same as Drugbank to process TWOSIDES
