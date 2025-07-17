@@ -130,21 +130,6 @@ def create_train_val_test_split(pyg_data, val_ratio=0.1, test_ratio=0.2, min_tes
     return train_data, val_data, test_data
 
 
-def print_node_info(node_index, pyg_data):
-    node_id = pyg_data.node_ids[node_index]  
-    features = pyg_data.x[node_index]  
-    enzyme = pyg_data.node_data['enzyme'][node_index]  
-    target = pyg_data.node_data['target'][node_index]  
-    gene = pyg_data.node_data['gene'][node_index]  
-    disease = pyg_data.node_data['disease'][node_index]  
-    neighbors = pyg_data.edge_index[1][pyg_data.edge_index[0] == node_index].tolist()  
 
-    print(f"Node ID: {node_id}")
-    print(f"Enzyme: {enzyme}")
-    print(f"Target: {target}")
-    print(f"Gene: {gene}")
-    print(f"Disease: {disease}")
-    print(f"Features: {features}")
-    print(f"Neighbors: {[pyg_data.node_ids[n] for n in neighbors]}")  
 
 
