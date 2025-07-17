@@ -46,7 +46,7 @@ python utils/drugbank_event_pkl.py \
 ```
 python Drugbank/train.py
 ```
-2.1 Same as Drugbank to process TWOSIDES
+2.1 Same as Drugbank to process TWOSIDES, the file is too large to be split, so it needs to be manually extracted from the compressed package and placed in the data folder.
 ```
 cd TWOSIDES
 ```
