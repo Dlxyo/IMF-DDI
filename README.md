@@ -67,3 +67,7 @@ python utils/drugbank_event_pkl.py \
   --output pkl/TWOSIDES_drug.pkl \
   --full
 ```
+1.3 Before executing the training file, you need to manually change the pkl file path to the generated path.
+```
+python TWOSIDES/train.py
+```
