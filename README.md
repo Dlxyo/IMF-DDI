@@ -51,12 +51,12 @@ python Drugbank/train.py
 cd TWOSIDES
 ```
 ```
-python utils/drugbank_drug_pkl.py \
-  --train data/train.csv \
-  --val data/val.csv \
-  --test data/test.csv \
-  --ddi data/drugbank_ddi_id.txt \
-  --output pkl/drugbank_event.pkl
+python utils/TWOSIDES_event_pkl.py \
+  --train_csv data/train_pol.csv \
+  --val_csv data/valid_pol.csv \
+  --test_csv path/to/test_pol.csv \
+  --output_file pkl/TWOSIDES_event.pkl \
+  [--max_ddi 200]
 ```
 
 2.2 Same as Drugbank to process TWOSIDES
