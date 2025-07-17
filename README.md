@@ -43,8 +43,9 @@ python utils/drugbank_event_pkl.py \
   --full
 ```
 1.3 train
-
-
+```
+python Drugbank/train.py
+```
 2.1 Same as Drugbank to process TWOSIDES
 
 
