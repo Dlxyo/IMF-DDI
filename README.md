@@ -61,11 +61,11 @@ python utils/TWOSIDES_event_pkl.py \
 
 2.2 Same as Drugbank to process TWOSIDES
 ```
-python utils/drugbank_drug_pkl.py \
-  --csv data/TWOSIDES.csv \
-  --txt data/unimol_repr_TWOSIDES.txt \
-  --output pkl/TWOSIDES_drug.pkl \
-  --full
+python TWOSIDES_drug_pkl.py \
+  --txt_file3 data/unimol_repr_TWOSIDES.txt \
+  --csv_file data/TWOSIDES.csv \
+  --output_file pkl/TWOSIDES_drug.pkl \
+  --entity
 ```
 1.3 Before executing the training file, you need to manually change the pkl file path to the generated path.
 ```
