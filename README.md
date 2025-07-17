@@ -42,7 +42,7 @@ python utils/drugbank_event_pkl.py \
   --output pkl/drugbank_pathway.pkl \
   --full
 ```
-1.3 train，before pointing to the training file, you need to manually change the pkl file path to the generation path.
+1.3 Before executing the training file, you need to manually change the pkl file path to the generated path.
 ```
 python Drugbank/train.py
 ```
