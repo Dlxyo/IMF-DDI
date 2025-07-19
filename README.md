@@ -46,7 +46,7 @@ python utils/drugbank_drug_pkl.py \
 ```
 python Drugbank/train.py
 ```
-2.1 Same as Drugbank to process TWOSIDES, the data files is too large and needs to be manually decompressed from the compressed package and placed in the data folder.
+2.1 Same as Drugbank to process TWOSIDES, the data files is too large and needs to be manually decompressed from the compressed package and placed in the data folder. The pkl file is too large and exceeds the upload limit. Please generate it according to the steps.
 ```
 cd TWOSIDES
 ```
