@@ -251,8 +251,8 @@ if __name__ == "__main__":
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     log_file_path = 'imf_wosides.txt'  # You can change the file path as needed
     best_model_path = "imf_twosides.pth"
-    node_file_path = '/home/lixiaoyang/IMF-DDI-main/TWOSIDES/pkl/TWOSIDES_drug.pkl'
-    edge_file_path = '/home/lixiaoyang/IMF-DDI-main/TWOSIDES/pkl/TWOSIDES_event.pkl'
+    node_file_path = '/TWOSIDES/pkl/TWOSIDES_drug.pkl'
+    edge_file_path = '/TWOSIDES/pkl/TWOSIDES_event.pkl'
 
 
     # Load data and build graph
