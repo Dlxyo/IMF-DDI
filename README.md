@@ -54,7 +54,7 @@ cd TWOSIDES
 python utils/TWOSIDES_event_pkl.py \
   --train_csv data/train_pol.csv \
   --val_csv data/valid_pol.csv \
-  --test_csv path/to/test_pol.csv \
+  --test_csv data/test_pol.csv \
   --output_file pkl/TWOSIDES_event.pkl \
   [--max_ddi 200]
 ```
