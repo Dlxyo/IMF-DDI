@@ -61,7 +61,7 @@ python utils/TWOSIDES_event_pkl.py \
 
 2.2 Same as Drugbank to process TWOSIDES
 ```
-python TWOSIDES_drug_pkl.py \
+python utils/TWOSIDES_drug_pkl.py \
   --txt_file3 data/unimol_repr_TWOSIDES.txt \
   --csv_file data/TWOSIDES.csv \
   --output_file pkl/TWOSIDES_drug.pkl \
