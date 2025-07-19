@@ -40,7 +40,7 @@ python utils/drugbank_drug_pkl.py \
   --csv data/drugbank.csv \
   --txt data/unimol_repr_drugbank.txt \
   --output pkl/drugbank_drug.pkl \
-  --full
+  --four entity
 ```
 1.3 Before executing the training file, you need to manually change the pkl file path to the generated path.
 ```
