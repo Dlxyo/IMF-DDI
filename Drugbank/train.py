@@ -300,14 +300,16 @@ if __name__ == "__main__":
     elif opt =='val':
         opt_data = val_data
     # Training and evaluation
-    best_acc = 0
+    best_val_acc = 0
     best_metrics = {}
-    epochs = 10000
+    patience = 10
+    no_improve_epochs = 0
+    max_epochs = 1000
     
     with open(log_file_path, 'a', buffering=1) as log_file:  
-        log_file.write("Epoch,Train Loss,ACC,F1,Cohen's Kappa\n")  # Header
-        for epoch in range(epochs):
-            # Train the model with input perturbations and regularization
+        log_file.write("Epoch,Train Loss,Val ACC,Val F1,Cohen's Kappa\n")  # Header
+    
+        for epoch in range(max_epochs):
             train_loss = train_model(
                 train_data,
                 model,
@@ -317,34 +319,40 @@ if __name__ == "__main__":
                 edge_indices_dict,
                 alpha=1.0,
                 beta=1.0,
-                noise_std=1e-3,      # Standard deviation for input noise
-                lambda_reg=1e-2      # Regularization coefficient
+                noise_std=1e-3,
+                lambda_reg=1e-2
             )
-
-            # Evaluate the model on the test set
-            
-            acc, f1, kappa = evaluate_model(opt_data, model, device, edge_indices_dict)
-
-            print(f"Epoch {epoch + 1}/{epochs}:")
-            print(f"Train Loss: {train_loss:.4f}, ACC: {acc:.4f}, F1: {f1:.4f}, Cohen's Kappa: {kappa:.4f}")
-            log_file.write(f"{epoch + 1},{train_loss:.4f},{acc:.4f},{f1:.4f},{kappa:.4f}\n")
-            log_file.flush()  
-            # Update the best results
-            if acc > best_acc:
-                best_acc = acc
+    
+            val_acc, val_f1, val_kappa = evaluate_model(val_data, model, device, edge_indices_dict)
+    
+            print(f"Epoch {epoch + 1}/{max_epochs}:")
+            print(f"Train Loss: {train_loss:.4f}, Val ACC: {val_acc:.4f}, Val F1: {val_f1:.4f}, Cohen's Kappa: {val_kappa:.4f}")
+            log_file.write(f"{epoch + 1},{train_loss:.4f},{val_acc:.4f},{val_f1:.4f},{val_kappa:.4f}\n")
+            log_file.flush()
+    
+            if val_acc > best_val_acc:
+                best_val_acc = val_acc
+                no_improve_epochs = 0
                 best_metrics = {
                     'epoch': epoch + 1,
                     'loss': train_loss,
-                    'acc': acc,
-                    'f1': f1,
-                    'kappa': kappa,
+                    'acc': val_acc,
+                    'f1': val_f1,
+                    'kappa': val_kappa,
                 }
-                torch.save(model.state_dict(), best_model_path) 
+                torch.save(model.state_dict(), best_model_path)
+            else:
+                no_improve_epochs += 1
+    
+            if no_improve_epochs >= patience:
+                print(f"Early stopping triggered after {epoch + 1} epochs without improvement.")
+                break
+    
             if (epoch + 1) % 10 == 0:
-                print("Best Results:")
+                print("Best Results so far:")
                 print(f"Epoch: {best_metrics['epoch']}, Train Loss: {best_metrics['loss']:.4f}, "
-                    f"ACC: {best_metrics['acc']:.4f}, F1: {best_metrics['f1']:.4f}, Cohen's Kappa: {best_metrics['kappa']:.4f}")
+                      f"ACC: {best_metrics['acc']:.4f}, F1: {best_metrics['f1']:.4f}, Cohen's Kappa: {best_metrics['kappa']:.4f}")
                 log_file.write(f"Best up to Epoch {epoch + 1}: Epoch {best_metrics['epoch']}, "
                                 f"Train Loss: {best_metrics['loss']:.4f}, ACC: {best_metrics['acc']:.4f}, "
                                 f"F1: {best_metrics['f1']:.4f}, Cohen's Kappa: {best_metrics['kappa']:.4f}\n")
-                log_file.flush()  
+                log_file.flush()
