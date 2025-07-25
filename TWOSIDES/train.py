@@ -320,13 +320,14 @@ if __name__ == "__main__":
 
     best_acc = 0
     best_metrics = {}
-    epochs = 1000
-   
-
+    epochs = 1000  
+    patience = 10  
+    best_val_auroc = 0
+    epochs_no_improve = 0
+    
     with open(log_file_path, 'a', buffering=1) as log_file:  
         log_file.write("Epoch,Train Loss,AUROC,AUPRC,AP@50\n")  
         for epoch in range(epochs):
-            # Train the model with input perturbations and regularization
             train_loss = train_model(
                 train_data,
                 model,
@@ -335,17 +336,20 @@ if __name__ == "__main__":
                 device,
                 edge_indices_dict
             )
-
-            # Evaluate the model on the test set
+    
+            
             auroc, auprc, ap_at_50 = evaluate_model(opt_data, model, device, edge_indices_dict)  
-
+    
             print(f"Epoch {epoch + 1}/{epochs}:")
             print(f"Train Loss: {train_loss:.4f}, AUROC: {auroc:.4f}, AUPRC: {auprc:.4f}, AP@50: {ap_at_50:.4f}")
             log_file.write(f"{epoch + 1},{train_loss:.4f},{auroc:.4f},{auprc:.4f},{ap_at_50:.4f}\n")
             log_file.flush()  
-            # Update the best results
-            if auroc > best_acc:  
-                best_acc = auroc
+    
+           
+            if auroc > best_val_auroc:
+                best_val_auroc = auroc
+                epochs_no_improve = 0
+                torch.save(model.state_dict(), best_model_path) 
                 best_metrics = {
                     'epoch': epoch + 1,
                     'loss': train_loss,
@@ -353,12 +357,19 @@ if __name__ == "__main__":
                     'auprc': auprc,
                     'ap_at_50': ap_at_50,
                 }
-            torch.save(model.state_dict(), best_model_path) 
+            else:
+                epochs_no_improve += 1
+    
             if (epoch + 1) % 10 == 0:
-                print("Best Results:")
+                print(f"Best Results up to Epoch {epoch + 1}:")
                 print(f"Epoch: {best_metrics['epoch']}, Train Loss: {best_metrics['loss']:.4f}, "
-                    f"AUROC: {best_metrics['auroc']:.4f}, AUPRC: {best_metrics['auprc']:.4f}, AP@50: {best_metrics['ap_at_50']:.4f}")
+                      f"AUROC: {best_metrics['auroc']:.4f}, AUPRC: {best_metrics['auprc']:.4f}, AP@50: {best_metrics['ap_at_50']:.4f}")
                 log_file.write(f"Best up to Epoch {epoch + 1}: Epoch {best_metrics['epoch']}, "
-                            f"Train Loss: {best_metrics['loss']:.4f}, AUROC: {best_metrics['auroc']:.4f}, "
-                            f"AUPRC: {best_metrics['auprc']:.4f}, AP@50: {best_metrics['ap_at_50']:.4f}\n")
-                log_file.flush() 
+                               f"Train Loss: {best_metrics['loss']:.4f}, AUROC: {best_metrics['auroc']:.4f}, "
+                               f"AUPRC: {best_metrics['auprc']:.4f}, AP@50: {best_metrics['ap_at_50']:.4f}\n")
+                log_file.flush()
+    
+            if epochs_no_improve >= patience:
+                print(f"No improvement in AUROC for {patience} consecutive epochs. Stopping training at epoch {epoch + 1}.")
+                break
+    
