@@ -44,7 +44,7 @@ python utils/drugbank_drug_pkl.py \
 ```
 1.3 Before executing the training file, you need to manually change the pkl file path to the generated path.
 ```
-python Drugbank/train.py
+python train.py
 ```
 2.1 Same as Drugbank to process TWOSIDES, the data files is too large and needs to be manually decompressed from the compressed package and placed in the data folder. The pkl file is too large and exceeds the upload limit. Please generate it according to the steps.
 ```
@@ -69,5 +69,5 @@ python utils/TWOSIDES_drug_pkl.py \
 ```
 1.3 Before executing the training file, you need to manually change the pkl file path to the generated path.
 ```
-python TWOSIDES/train.py
+python train.py
 ```
