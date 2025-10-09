@@ -1,4 +1,7 @@
 # IMF-DDI
+
+"IMF-DDI: Information mapping and fusion framework for drug-drug interaction prediction" has been accepted for publication in *Interdisciplinary Sciences: Computational Life Sciences*.
+
 **Data preparation**
 
 An innovative (Drug-Drug interaction)DDI predic- tion framework 
